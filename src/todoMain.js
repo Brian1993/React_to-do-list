@@ -31,16 +31,12 @@ class TodoMain extends Component {
 
     }
     deleteItems=(key)=>{
-        console.log(key);
-        let filetrItems =this.state.items.filter(remainList => remainList.key !== key)
-        console.log("filetrItems : " ,filetrItems);
+        let filetrItems =this.state.items.filter(remainList => remainList.key !== key);
         this.setState({
             items:filetrItems
         })
     }
-
-    render() { 
-      
+    render() {  
         return (
             <div className="todoMain"> 
                 <h1>React to-do-list</h1>
