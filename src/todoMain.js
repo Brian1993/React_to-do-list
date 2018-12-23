@@ -12,22 +12,11 @@ class TodoMain extends Component {
 
     addItems =(e) =>{
         e.preventDefault();
-        if(this.taskInput.value !==""){
-            var newItem = {
-                text:this.taskInput.value,
-                key:Date.now()   //要找一個比較獨特的數字當key,也可以用Math.random,但是這個比較好 
-            }
-            ///////////////
-            this.setState((prevState)=>{
-                return {
-                    items :[ ...prevState.items,newItem]
-                }
-            });
-            //////////////
-        }else{
-            alert(" Please enter the task ! ")
-        }
-        this.taskInput.value ="";
+        const inputVal = this.taskInput.value
+        if (!inputVal) return alert(" Please enter the task ! ")
+        const newItem = { text:this.taskInput.value, key:Date.now() }
+        this.setState( prevState => ({ items :[ ...prevState.items,newItem] }))
+        this.taskInput.value = ''
 
     }
     deleteItems=(key)=>{
@@ -40,14 +29,15 @@ class TodoMain extends Component {
         return (
             <div className="todoMain"> 
                 <h1>React to-do-list</h1>
-                <form  onSubmit={this.addItems} className="todoForm">
-                    <input  ref={input =>this.taskInput = input } 
-                            placeholder="enter task" 
-                            type="text" />
-                    <button  type="submit">Add</button>
+                <form onSubmit={this.addItems} className="todoForm">
+                    <input
+                        ref={input =>this.taskInput = input } 
+                        placeholder="enter task" 
+                        type="text" 
+                    />
+                    <button type="submit">Add</button>
                 </form>           
-                <TodoItems   list={this.state.items} 
-                             deleteItems={this.deleteItems}/>
+                <TodoItems list={this.state.items} deleteItems={this.deleteItems} />
             </div>
           );
     }
