@@ -7,10 +7,10 @@ class TodoMain extends Component {
         this.state = { 
             items:[]
          }
-         this.deleteItems = this.deleteItems.bind(this);
+         this.deleteItems = this.deleteItems.bind(this)
     }
 
-    addItems =(e) =>{
+    addItems = e => {
         e.preventDefault();
         const inputVal = this.taskInput.value
         if (!inputVal) return alert(" Please enter the task ! ")
@@ -19,7 +19,7 @@ class TodoMain extends Component {
         this.taskInput.value = ''
 
     }
-    deleteItems=(key)=>{
+    deleteItems = key => {
         let filetrItems =this.state.items.filter(remainList => remainList.key !== key);
         this.setState({
             items:filetrItems

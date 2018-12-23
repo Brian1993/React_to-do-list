@@ -3,7 +3,7 @@ import FlipMove from 'react-flip-move';
 
 
 class TodoItems extends Component {
-    delete = key => this.props.deleteItems(key);  //父層的callback,把要刪掉的list的key傳回去
+    delete = key => this.props.deleteItems(key) //父層的callback,把要刪掉的list的key傳回去
 
     makeList = listData => (
         <li  className="list" key={listData.key}>  
